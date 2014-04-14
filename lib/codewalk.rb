@@ -21,4 +21,9 @@ class Codewalk
         @chunks[-1]
     end
 
+    def run(command)
+        output_raw = `#{command}`
+        parse(output_raw)
+    end
+
 end

@@ -4,12 +4,12 @@ output_raw = <<-EOF
 
 EXAMPLE 1
 
-['a', 'b', 'c']
+["a", "b", "c"]
 
 EXAMPLE 2
 
 Popped 'c'
-['a', 'b']
+["a", "b"]
 EOF
 
 describe Codewalk do
@@ -19,8 +19,8 @@ describe Codewalk do
 
         c.parse(output_raw)
 
-        expect(c[0]).to eq("['a', 'b', 'c']")
-        expect(c[1]).to eq("Popped 'c'\n['a', 'b']")
+        expect(c[0]).to eq(['a','b','c'].inspect)
+        expect(c[1]).to eq("Popped 'c'\n#{['a','b'].inspect}")
     end
 
     it "should output only the last example" do
@@ -28,7 +28,15 @@ describe Codewalk do
 
         c.parse(output_raw)
 
-        expect(c.output).to eq("Popped 'c'\n['a', 'b']")
+        expect(c.output).to eq("Popped 'c'\n#{['a','b'].inspect}")
+    end
+
+    it "should run a script and parse its output" do
+        c = Codewalk.new
+
+        c.run("ruby spec/output_examples.rb")
+
+        expect(c.output).to eq("Popped 'c'\n#{['a','b'].inspect}")
     end
 
 end
