@@ -1,6 +1,7 @@
 class Codewalk
 
-    DELIMITER = /\nEXAMPLE [0-9]*\n/
+    BORDER = "[= ]*"
+    DELIMITER = /\n#{BORDER}EXAMPLE [0-9\.]*#{BORDER}\n/
 
     def parse(output_raw)
         raw_chunks = output_raw.split(DELIMITER)
