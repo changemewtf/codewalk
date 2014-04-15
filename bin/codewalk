@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+require 'codewalk'
+
+command = ARGV.join(" ")
+
+codewalk = Codewalk.new.run(command)
+
+print codewalk.output()

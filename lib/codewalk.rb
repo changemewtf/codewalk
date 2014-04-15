@@ -11,6 +11,8 @@ class Codewalk
             chunk[0] = ""
             chunk
         end
+
+        self
     end
 
     def [](index)
@@ -24,6 +26,8 @@ class Codewalk
     def run(command)
         output_raw = `#{command}`
         parse(output_raw)
+
+        self
     end
 
 end
